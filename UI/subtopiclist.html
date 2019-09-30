@@ -1,0 +1,85 @@
+<!doctype html>
+<html ng-app="App">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="subtopiclist.js"></script>
+    <link rel="stylesheet" type="text/css" href="geecoder.css"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+    a {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size : 20px;
+    color:white !important;
+}
+
+    </style>
+</head>
+
+<body ng-controller="SubTopicListController">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a>
+                <img src="G.svg.png" height="55" width="55" style="float:left">
+            </a>
+        </div>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large active">HOME</a>
+    </div>
+</nav>
+<div class="container">
+    <div class="col-md-12">
+        <div class="col-md-5">
+            <header>
+                <i class="fa fa-plus-square" aria-hidden="true" data-toggle="modal" data-target="#myModal"
+                   style="font-size:32px;float:right;margin-right:210px;"></i>
+                <h2>Subdomains</h2>
+            </header>
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Modal Header</h4>
+                        </div>
+                        <div class="modal-body">
+                            <center> Subtopic : <input type="text" ng-model="subtopicName"/></center>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" ng-click="add_subtopic()">Add</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="list-group">
+                <li ng-repeat="item in subtopics" ng-click="get_questions(item)">{{item.subTopic}}
+                </li>
+            </ul>
+
+        </div>
+        <div ng-show="ShowQuestion" class="col-md-7">
+            <h2>{{subtopic.subTopic}}</h2>
+            <div class="question-card" ng-repeat="item in questions">
+                <div class="card-body">
+                    <div class="col-md-8">
+                        <h4 style="color:#4CAF50;font-size:25px">{{item.question}}</h4>
+                        <h6 style="color:#757575;font-size:18px">{{item.difficultyLevel}}</h6>
+                    </div>
+                    <div clas="col-md-4">
+                        <button ng-click="open_question(item)" class="btn btn-primary"
+                                style="background:#4CAF50;border:0px">Solve Challenge
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!--pagination = https://embed.plnkr.co/M2XIlr/-->
+        </div>
+    </div>
+</div>
+</body>
+</html>

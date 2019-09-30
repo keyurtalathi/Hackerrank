@@ -1,0 +1,93 @@
+<!doctype html>
+<html ng-app="App">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="question.js"></script>
+    <script src="jquery-linedtextarea.js"></script>
+	<link href="jquery-linedtextarea.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="geecoder.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    a {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size : 20px;
+    color:white !important;
+}
+</style>
+</head>
+
+<body ng-controller="QuestionController">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+     <a>
+         <img src="G.svg.png" height="55" width="55" style="float:left" >
+     </a>
+    </div>
+     <a href="#" class="w3-bar-item w3-button w3-padding-large active">HOME</a>
+  </div>
+</nav>
+<div class="container">
+    <h1>{{question.question}}</h1><br>
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a data-toggle="tab" href="#question" style="color:#4CAF50!important">Problem</a>
+        </li>
+        <li>
+            <a data-toggle="tab" href="#submission" style="color:#4CAF50!important">Submission</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+
+            <div id="question" class="tab-pane fade in active">
+                <div style="width:80%;margin:auto">
+                    <br>
+                     <p>{{questionData}}</p>
+                </div>
+
+                <div class="dropdown" style="width:80%;margin:auto">
+                    <br>
+                    <select style="float:right;margin-right:18px;" ng-model="selectedLanguage" ng-options="language.language for language in languages">
+
+                    </select>
+                </div>
+                <div style="width:80%;margin:auto">
+                    <!--question description-->
+                    <br><br>
+                    <textarea id="code" class="lined" rows="20" cols="97"></textarea>
+                </div>
+                <div style="width:80%;margin:auto">
+                    <br>
+                    <button type="button" class="btn btn-primary" style="border:0px;background:#4CAF50;color:white;">
+                        <i class="fa fa-upload" style="color:white" aria-hidden="true" ng-click="file_open()"> upload code as file</i>
+                    </button>
+                    <input type="file" id="codeFile" on-read-file="showContent($fileContent)"/>
+                    <button type="button" ng-click="run_code()" class="btn btn-primary" style="float:right;margin-right:18px;background:#4CAF50;border:0px">Run Code</button>
+                    <button type="button" ng-click="submit_code()" class="btn btn-primary" style="float:right;margin-right:18px;background:#4CAF50;border:0px">Submit Code</button>
+                </div>
+            </div>
+
+            <div id="submission" class="tab-pane fade">
+                    <div style="width:80%;margin:auto">
+
+
+
+                    </div>
+            </div>
+
+
+</div>
+    <script>
+$(function() {
+	$(".lined").linedtextarea(
+		{selectedLine: 0}
+	);
+});
+</script>
+</body>
+</html>
